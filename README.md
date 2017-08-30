@@ -6,5 +6,7 @@ This portlet will initiate Kaleo scheduler based on user input
 - Initial draft required start date and time from user and using SchedulerEngineHelperUtil.getCronText to generate Cron,which was not 
   as per requirement,either due to data format required or some other reason
 - Finally Cron text is now directly expected from user,along with any Scheduler message to scheduler an activity
-- Cron can be generated from any online utility such as cronmaker.com,as per user needs 
+- Cron can be generated from any online utility such as [cronmaker.com],as per user needs 
+   [//]: #
+   [cronmaker.com]: <http://www.cronmaker.com>
 	
