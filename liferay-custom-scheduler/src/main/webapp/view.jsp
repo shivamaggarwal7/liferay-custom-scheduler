@@ -14,6 +14,7 @@
  */
 --%>
 
+<%@page import="com.liferay.portal.kernel.servlet.SessionMessages"%>
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.time.Instant"%>
 <%@page import="java.time.LocalDate"%>
@@ -30,21 +31,35 @@ LocalDateTime date = LocalDateTime.now();
 
 <aui:form action="${scheduleURL}" method="post">
 
-<aui:field-wrapper label="Scheduler date and time">
-<liferay-ui:input-date formName="date" yearValue="<%=date.getYear()%>" 
+<liferay-ui:error key="invalidCron" message="The Cron is invalid"/>
+<aui:field-wrapper >
+
+<aui:input name="cron" type="text" label="Cron Text" helpMessage="You can create a custom cron at cronmaker.com"/>
+</aui:field-wrapper>
+<%-- <liferay-ui:input-date formName="date" yearValue="<%=date.getYear()%>" 
            monthValue="<%=date.getMonthValue() %>" dayValue="<%=date.getDayOfMonth() %>"
             dayParam="day" monthParam="month" yearParam="year" />
             
 <liferay-ui:input-time
-							amPmParam="defaultValueAmPm"
-							
+							amPmParam="amPm"
+							minuteInterval="10"
 							hourParam="hour"
 							hourValue="<%= date.getHour()%>"
 							minuteParam="min"
 							minuteValue="<%= date.getMinute()%>"
 						/>
 </aui:field-wrapper>					
-<aui:input name="message" type="text" label="Message"/>						
+<aui:input name="message" type="text" label="Message"/>
+<aui:select name="recurrence" label="Recurrence">
+    <aui:option value="7" selected="true">No Recurrence</aui:option>
+    <aui:option value="3">Daily</aui:option>
+    <aui:option value="5">Monthly</aui:option>
+    <aui:option value="4">Weekly</aui:option>
+    <aui:option value="6">Yearly</aui:option>
+</aui:select> 
+--%>
+<aui:input name="message" type="text" label="Message"/>
+					
 <aui:button type="submit" value="Submit"/>						
   
 </aui:form>
