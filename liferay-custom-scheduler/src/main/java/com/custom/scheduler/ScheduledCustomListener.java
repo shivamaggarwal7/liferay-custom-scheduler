@@ -13,7 +13,7 @@ public class ScheduledCustomListener implements MessageListener {
 		
           Log log=LogFactoryUtil.getLog(ScheduledCustomListener.class);		
 		 
-		  System.out.println(arg0.getString("message"));
+		  log.info(arg0.getString("message"));
 
 	}
 

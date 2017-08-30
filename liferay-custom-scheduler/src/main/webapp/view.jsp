@@ -36,6 +36,9 @@ LocalDateTime date = LocalDateTime.now();
 
 <aui:input name="cron" type="text" label="Cron Text" helpMessage="You can create a custom cron at cronmaker.com"/>
 </aui:field-wrapper>
+
+<!-- Data collected for custom cron creation -->
+
 <%-- <liferay-ui:input-date formName="date" yearValue="<%=date.getYear()%>" 
            monthValue="<%=date.getMonthValue() %>" dayValue="<%=date.getDayOfMonth() %>"
             dayParam="day" monthParam="month" yearParam="year" />

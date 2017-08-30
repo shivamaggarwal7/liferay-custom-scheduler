@@ -30,6 +30,10 @@ import com.liferay.util.bridges.mvc.MVCPortlet;
 public class PortletController extends MVCPortlet {
 
 	
+	/**
+	 * @param req
+	 * @param res
+	 */
 	public void createScheduler(ActionRequest req, ActionResponse res) {
 		
 		Logger log = Logger.getLogger(PortletController.class.getName());
@@ -41,6 +45,14 @@ public class PortletController extends MVCPortlet {
 		{
 			SessionErrors.add(req, "invalidCron");
 		}
+		else
+		{
+		String jobName = ScheduledCustomListener.class.getName();
+		String portletId= (String)req.getAttribute(WebKeys.PORTLET_ID);
+
+//		Data needed for creating 
+//		custom Cron
+		
 	/*  int recurrence = ParamUtil.getInteger(req, "recurrence");
 		int day = ParamUtil.getInteger(req, "day");
 		int month = ParamUtil.getInteger(req, "month");
@@ -48,16 +60,10 @@ public class PortletController extends MVCPortlet {
 
 		int min = ParamUtil.getInteger(req, "min");
 		int hour = ParamUtil.getInteger(req, "hour");
-		int amPm = ParamUtil.getInteger(req, "amPm");*/
-
-		else
-		{
-		String jobName = ScheduledCustomListener.class.getName();
-		String portletId= (String)req.getAttribute(WebKeys.PORTLET_ID);
-
-		/*Calendar startCalendar = new GregorianCalendar(year, month, day, hour, min);
+		int amPm = ParamUtil.getInteger(req, "amPm");
 		
-		
+		Calendar startCalendar = new GregorianCalendar(year, month, day, hour, min);
+				
 		String jobCronPattern = SchedulerEngineHelperUtil.getCronText(req, startCalendar, false,recurrence);
 
 		log.info(jobCronPattern);
@@ -75,8 +81,8 @@ public class PortletController extends MVCPortlet {
 					DestinationNames.SCHEDULER_DISPATCH, message, 0);
 
 		} catch (SchedulerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			log.info("Some error in scheduling Job");
 		}
 	 }
 
